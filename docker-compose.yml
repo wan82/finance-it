@@ -1,0 +1,26 @@
+# PostgreSQL 数据库容器配置
+# 启动：docker compose up -d  或  make db-up
+# 停止：docker compose down   或  make db-down
+# 销毁数据：docker compose down -v   （-v 会把数据卷一起删）
+
+services:
+  finance-pg:
+    image: postgres:16
+    container_name: finance-pg   # 容器名固定，方便 docker exec 引用
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: devpass
+      POSTGRES_DB: finance_db
+    ports:
+      - "5432:5432"              # 把容器内 5432 映射到宿主机 5432
+    volumes:
+      - finance-pg-data:/var/lib/postgresql/data   # 数据持久化（容器删了数据还在）
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d finance_db"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  finance-pg-data:                # 命名卷，由 Docker 自动管理

@@ -1,0 +1,81 @@
+# ===================================================================
+# Finance-It .gitignore
+# ===================================================================
+
+# -------- 敏感配置（最重要！）--------
+# 含数据库密码、JWT 密钥等。.env.example 是模板可以提交，.env 永远不传。
+.env
+.env.local
+.env.*.local
+*.env
+!.env.example
+
+# -------- Node.js 依赖（体积大，靠 package-lock.json 重建）--------
+node_modules/
+
+# -------- 日志文件 --------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# -------- 前端构建产物（Vite 生成）--------
+dist/
+dist-ssr/
+build/
+.vite/
+
+# -------- 测试覆盖率报告 --------
+coverage/
+*.lcov
+.nyc_output
+
+# -------- 数据库备份 / 转储文件（可能含真实数据）--------
+*.sql.bak
+*.dump
+backup.sql
+backup-*.sql
+
+# -------- 操作系统垃圾 --------
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# -------- 编辑器 / IDE --------
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+.project
+.classpath
+.settings/
+
+# -------- 临时文件 --------
+*.tmp
+*.temp
+.cache/
+
+# -------- 锁文件冲突标记 --------
+*.orig
+
+# -------- 可选：本地开发用的 Docker volume / 数据 --------
+# Docker volume 由 Docker 自己管理，不在仓库里。这里只是防御性写一下。
+postgres-data/
+pgdata/
+
+# -------- 个人笔记 / 草稿（不上传）--------
+笔记/
+backend/design

@@ -1,0 +1,8 @@
+amount,description,type,trans_date
+3000,工资,income,2026-05-01
+1200,房租,expense,2026-05-05
+100,买菜,expense,2026-05-29
+58.5,咖啡,expense,2026-05-28
+200,兼职收入,income,2026-05-20
+35,打车,expense,2026-05-22
+100,买菜,expense,2026-05-29
