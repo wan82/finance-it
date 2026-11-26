@@ -1,67 +1,60 @@
 # Finance-It
 
-个人记账全栈应用：React 前端 + Express 后端 + PostgreSQL（Docker）+ JWT 鉴权。
+A full-stack personal finance tracker: React frontend + Express backend + PostgreSQL (Docker) + JWT authentication.
 
-## 快速开始
+## Quick Start
 
-需要先装好 [Node.js](https://nodejs.org) 和 [Docker](https://www.docker.com/products/docker-desktop/)。然后：
+Make sure [Node.js](https://nodejs.org) and [Docker](https://www.docker.com/products/docker-desktop/) are installed. Then:
 
 ```bash
-# 一键安装：装依赖、启动数据库、建表
+# One-step setup: install dependencies, start the database, create tables
 make setup
 
-# 启动后端（一个终端）
+# Start the backend (in one terminal)
 make dev
 
-# 启动前端（另一个终端）
+# Start the frontend (in another terminal)
 make front
 ```
 
-浏览器打开 `http://localhost:5173` 即可。
+Then open `http://localhost:5173` in your browser.
 
-## 常用命令
+## Common Commands
 
-| 命令 | 作用 |
+| Command | Description |
 |---|---|
-| `make setup` | 一键安装（首次用） |
-| `make dev` | 启动后端 (`:3000`) |
-| `make front` | 启动前端 (`:5173`) |
-| `make db-up` / `db-down` | 启动 / 停止数据库 |
-| `make psql` | 进数据库命令行 |
-| `make db-reset` | 销毁并重建数据库（⚠️ 清空数据） |
-| `make clean` | 删除 node_modules |
+| `make setup` | One-step setup (first run) |
+| `make dev` | Start the backend (`:3000`) |
+| `make front` | Start the frontend (`:5173`) |
+| `make db-up` / `db-down` | Start / stop the database |
+| `make psql` | Open the database shell |
+| `make db-reset` | Destroy and recreate the database (⚠️ deletes all data) |
+| `make clean` | Remove node_modules |
 
-不带参数运行 `make` 会显示帮助。
+Run `make` with no arguments to show the help.
 
-## 技术栈
+## Tech Stack
 
-- **前端**：React 18 + Vite + React Router
-- **后端**：Node.js + Express + bcrypt + jsonwebtoken
-- **数据库**：PostgreSQL 16 (Docker Compose)
+- **Frontend**: React 18 + Vite + React Router
+- **Backend**: Node.js + Express + bcrypt + jsonwebtoken
+- **Database**: PostgreSQL 16 (Docker Compose)
 
-## 目录结构
+## Project Structure
 
 ```
 finance-it/
-├── docker-compose.yml    # 数据库容器配置
-├── Makefile              # 一键命令入口
-├── sql/init.sql          # 建表脚本
-├── backend/              # Express 后端
-│   ├── .env.example      # 环境变量模板
-│   ├── index.js          # 入口
-│   ├── db.js             # 数据库连接池
+├── docker-compose.yml    # Database container config
+├── Makefile              # One-step command entry point
+├── sql/init.sql          # Table creation script
+├── backend/              # Express backend
+│   ├── .env.example      # Environment variable template
+│   ├── index.js          # Entry point
+│   ├── db.js             # Database connection pool
 │   ├── middleware/auth.js
 │   └── routes/           # auth / transactions / users
-└── frontend/             # React 前端 (Vite)
+└── frontend/             # React frontend (Vite)
     └── src/
-        ├── api/          # 后端 API 封装
+        ├── api/          # Backend API wrappers
         ├── components/
         └── pages/
 ```
-
-## 详细文档
-
-`笔记/` 目录有完整的技术解析：
-- `项目技术全解.md` — 整体架构与全栈易错点
-- `前端三大文件深度解析.md` — app.js / import.js / dashboard.js 逐函数拆解（重构 React 前的版本）
-- `React入门教程.md` — 基于本项目的 React 学习材料
